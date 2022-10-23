@@ -1,0 +1,27 @@
+{% extends 'registration/header.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<h1>Clients</h1>
+<br/>
+<table class="table table-striped table-hover table-bordered">
+	{% for client in clients %}
+		<tr>
+			<td>
+				<a href="{% url 'view_client' client.client_id %}">{{ client.client_name }}</a>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+<br/></br/>	
+
+{% else %}
+<h1>Please log in to view samples.</h1>
+
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
+{% endblock %}

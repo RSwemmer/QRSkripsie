@@ -1,0 +1,26 @@
+
+{% extends 'registration/header.html' %}
+
+    {% block content %}
+        
+{% if user.is_authenticated %}
+      
+      <div class="container py-5">
+        <center>
+        <h1>You are logged in to SIR Software!</h1> <!-- Main page greeting message-->
+        </center>
+        </div>
+
+      {% else %}
+
+      <div class="container py-5">
+        <center>
+        <h1>Welcome to SIR Software, please log in!</h1> <!-- Login page message-->
+        </center>
+        </div>
+
+      {% endif %}
+
+        
+    {% endblock %}
+

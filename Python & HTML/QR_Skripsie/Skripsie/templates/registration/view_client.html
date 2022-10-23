@@ -1,0 +1,43 @@
+{% extends 'registration/header.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<div class="card">
+  <div class="card-header">
+    Client
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ client }}</h5>
+    <p class="card-text">
+      
+  <ul>
+
+	  <li>Name: {{ client.client_name }}</li>
+      <li>Email: {{ client.client_email }}</li>
+      <li>Contact number: {{ client.client_phone }}</li>
+	  
+
+	</ul>
+
+
+
+    </p>
+  </div>
+
+<button type="button",  class="btn btn-info">
+    <a href="{% url 'update_client' client.client_id %}" style="color: rgb(0, 0, 0); text-decoration: none">Update Client</a>
+</button>
+
+<button type="button",  class="btn btn-warning">
+    <a href="{% url 'delete_client' client.client_id %}" style="color: rgb(0, 0, 0); text-decoration: none">Delete Client</a>
+</button>
+{% else %}
+<h1>Please log in to view client.</h1>
+
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
+{% endblock %}

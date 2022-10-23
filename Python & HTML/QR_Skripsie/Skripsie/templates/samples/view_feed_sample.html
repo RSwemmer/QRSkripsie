@@ -1,0 +1,51 @@
+{% extends 'registration/header.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<div class="card">
+  <div class="card-header">
+    Feed sample
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ feed_sample }}</h5>
+    <p class="card-text">
+      
+  <ul>
+    <p>Date: {{ feed_sample.sample_date }} </li>
+	  <br>Name: {{ feed_sample.sample_name }} </li>
+    <br>Client: {{ feed_sample.client }}</li>
+    <br>Invoice number: {{ feed_sample.sample_invoice }}</li>
+    <br>Required tests: {{ feed_sample.required_tests }}<p>
+      
+    <h6> Test Results: </h6> 
+    <ul>
+      <li>Aflatoxin B concentration: {{ feed_sample.AflatoxinB_present }}</li>
+      <li>Aflatoxin G concentration: {{ feed_sample.AflatoxinG_present }}</li>   
+	    <li>Nivalenol concentration: {{ feed_sample.Nivalenol_present }}</li>
+      <li>Octratoxin concentration: {{ feed_sample.Ochratoxin_present }}</li>
+      <li>Fumonisin concentration: {{ feed_sample.Fumonisin_present }}</li>
+      <li>Zearalenone concentration: {{ feed_sample.Zearalenone_present }}</li>
+      <li>Deoxynivalenol concentration: {{ feed_sample.Deoxynivalenol_present }}</li>
+    </ul> </ul>
+    {% load static %}
+    <img src="{% static source_name %}" />
+    </p>
+  </div>
+
+<button type="button",  class="btn btn-info">
+    <a href="{% url 'update_feed_sample' feed_sample.sample_id %}" style="color: rgb(0, 0, 0); text-decoration: none">Update Sample</a>
+</button>
+
+<button type="button",  class="btn btn-warning">
+    <a href="{% url 'delete_feed_sample' feed_sample.sample_id %}" style="color: rgb(0, 0, 0); text-decoration: none">Delete Sample</a>
+</button>
+{% else %}
+<h1>Please log in to view a sample.</h1>
+
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
+{% endblock %}

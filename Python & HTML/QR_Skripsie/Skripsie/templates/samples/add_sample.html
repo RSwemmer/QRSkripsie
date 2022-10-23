@@ -1,0 +1,22 @@
+{% extends "registration/header.html" %}
+
+{% block content %}  
+{% if user.is_authenticated %}
+
+    <center>
+        <h1>Specify type of sample to add.</h1>
+        <br/><br/>
+
+        <button type="button",  class="btn btn-outline-success btn-lg">
+            <a href="/add_feed_sample" style="color: black; text-decoration: none">Feed Sample</a>
+        </button>
+        
+        <button type="button",  class="btn btn-outline-primary btn-lg">
+            <a href="/add_residue_sample" style="color: black; text-decoration: none">Residue Sample</a>
+        </button>
+
+    </center>
+
+{% endif %}
+
+{% endblock %} 

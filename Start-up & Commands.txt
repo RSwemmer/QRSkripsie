@@ -1,0 +1,24 @@
+Run website:
+
+Open Anaconda command prompt > run as admin
+*F:
+*cd F:/Skripsie/QRCodeGeneration/"Python & HTML"/QR_Skripsie/Skripsie
+*python manage.py runserver 0.0.0.0:8000
+
+
+Open browser > Go to localhost:8000
+Login: Ruzel/Skripsie
+
+
+
+*IF YOU CHANGE MODELS.PY*
+CNTRL C
+python manage.py makemigrations
+python manage.py migrate --run-syncdb
+python manage.py runserver 0.0.0.0:8000
+
+* after nuking
+python manage.py createsuperuser
+
+*ip
+ipconfig

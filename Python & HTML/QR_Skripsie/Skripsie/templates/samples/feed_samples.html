@@ -1,0 +1,30 @@
+{% extends 'registration/header.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<h1>Feed Samples</h1>
+<br/>
+<table class="table table-striped table-hover table-bordered">
+	{% for feed_sample in feed_samples %}
+		<tr>
+			<td width="3">
+				{{ feed_sample.sample_id }}
+			</td>
+			<td>
+				<a href="{% url 'view_feed_sample' feed_sample.sample_id %}"> {{feed_sample.sample_name}}</a>
+			</td>
+		</tr>
+	{% endfor %}
+</table>
+<br/></br/>	
+
+{% else %}
+<h1>Please log in to view samples.</h1>
+
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
+{% endblock %}

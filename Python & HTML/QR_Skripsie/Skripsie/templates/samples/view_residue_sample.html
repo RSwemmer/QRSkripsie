@@ -1,0 +1,56 @@
+{% extends 'registration/header.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<div class="card">
+  <div class="card-header">
+    Residue sample
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ residue_sample }}</h5>
+    <p class="card-text">
+      
+    <ul>
+
+    <p>Date: {{ residue_sample.sample_date }} </li>
+    <br>Name: {{ residue_sample.sample_name }} </li>
+	  <br>Client: {{ residue_sample.client }}</li>
+    <br>Invoice number: {{ residue_sample.sample_invoice }}</li>
+    <br>Required tests: {{ residue_sample.required_tests }}</li>
+    
+    <h6> Test Results: </h6> 
+    <ul>
+      <li>Penicillin concentration: {{ residue_sample.Penicillin_present }}</li>
+      <li>Monensin concentration: {{ residue_sample.Monensin_present }}</li>
+      <li>Ampicillian concentration: {{ residue_sample.Ampicillin_present }}</li>
+      <li>Enrofloxacin concentration: {{ residue_sample.Enrofloxacin_present }}</li>
+      <li>Ciprofloxacin concentration: {{ residue_sample.Ciprofloxacin_present }}</li>
+      <li>Sulfadimidine concentration: {{ residue_sample.Sulfadimidine_present }}</li>
+      <li>Chloramphenicol concentration: {{ residue_sample.Chloramphenicol_present }}</li>
+    </ul> </ul> 
+
+    {% load static %}
+    <img src="{% static source_name %}" />
+
+	</ul>
+
+    </p>
+  </div>
+
+<button type="button",  class="btn btn-info btn-lg">
+    <a href="{% url 'update_residue_sample' residue_sample.sample_id %}" style="color: rgb(0, 0, 0); text-decoration: none">Update Sample</a>
+</button>
+
+<button type="button",  class="btn btn-warning btn-lg">
+    <a href="{% url 'delete_residue_sample' residue_sample.sample_id %}" style="color: rgb(0, 0, 0); text-decoration: none">Delete Sample</a>
+</button>
+{% else %}
+<h1>Please log in to view a sample.</h1>
+
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
+{% endblock %}

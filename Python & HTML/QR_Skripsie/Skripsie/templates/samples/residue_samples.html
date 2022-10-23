@@ -1,0 +1,30 @@
+{% extends 'registration/header.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+	<h1>Residue Samples</h1>
+<br/>
+<table class="table table-striped table-hover table-bordered">
+	{% for residue_sample in residue_samples %}
+	<tr>
+		<td width="10">
+			{{ residue_sample.sample_id }}
+		</td>
+		<td>
+			<a href="{% url 'view_residue_sample' residue_sample.sample_id %}"> {{residue_sample.sample_name}}</a>
+		</td>
+	</tr>
+	{% endfor %}
+</table>
+<br/></br/>	
+
+{% else %}
+<h1>Please log in to view samples.</h1>
+
+<a href="{% url 'login' %}">Login Here</a>
+
+{% endif %}
+
+
+{% endblock %}
